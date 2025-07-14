@@ -1,31 +1,29 @@
-const btnDanger = document.querySelector(".btn-danger");
+const btnDanger = document.querySelector("#btnBtn");
 const numberEntered = document.getElementById("numberEntered");
-const formNumberEntered = document.querySelector(".formNumberEntered");
-const inputValue = document.getElementsByTagName('input');
 
-const magicNumber=[]
-
-function generateRandomNumber(magicNumber) {
-  magicNumber = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
-  console.log(magicNumber);
+function generateRandomNumber(e) {
+  if(numberEntered.value===""){
+    alert(`Field empty!`)
+   return
   }
-
-function submmitEvent(e,numberEntered) {
   e.preventDefault();
-    
-  if (numberEntered.value === '') {
-    
-    console.log(numberEntered.value)
-    console.log(inputValue.value)
-        alert(`The field es empty! we're trying to guess the magic number!`)
-     }
-    
-     
-  
+  const magicNumber = Math.floor(Math.random() ) + 2;
+  console.log(magicNumber);
 
+   if(!isNaN(numberEntered.value))
+ {
+    btnDanger.textContent = "I'll have luck!";
+    btnDanger.classList.replace("btn-danger", "btn-success");
+    if(numberEntered.value!==magicNumber){
+      alert(`Wrong number!`)
+      
+    }
+     if(numberEntered==magicNumber){
+      alert(`Correct number broo`)
+    }
+   
+ }
+  
 }
 
-
-btnDanger.addEventListener("click", generateRandomNumber)
-
-formNumberEntered.addEventListener("submit", submmitEvent)
+btnDanger.addEventListener("click", generateRandomNumber);
